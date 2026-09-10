@@ -1,55 +1,20 @@
-# ❤️ Heart Disease Analyzer
+## 💡 Project Idea
 
-A Machine Learning web application built with Streamlit for analyzing heart disease datasets and comparing multiple classification models.
+A web application built with **Streamlit** that allows users to upload a **heart disease dataset in CSV format**.
 
-## 📌 Project Overview
+The application performs **Data Analysis and Exploratory Data Analysis (EDA)**, preprocesses and prepares the data, then trains and compares multiple **Machine Learning models**.
 
-This project provides an interactive interface for:
+The project focuses mainly on **Recall**, as detecting positive heart disease cases is an important objective.
 
-- 📊 Data Overview
-- 🔍 Exploratory Data Analysis (EDA)
-- 🤖 Machine Learning Model Comparison
-- ⚖️ Handling Class Imbalance
-- 🎯 Recall-focused training
-- 🔧 Hyperparameter Tuning using GridSearchCV
-- 🔄 Stratified Cross-Validation
-- 📈 ROC Curve and Precision-Recall Curve
-- 🎚️ Decision Threshold Tuning
+The application also provides:
 
-## 🛠️ Technologies Used
-
-- Python
-- Pandas
-- NumPy
-- Scikit-learn
-- Streamlit
-- Plotly
-- Imbalanced-learn (SMOTE)
-
-## 🤖 Machine Learning Models
-
-The application compares:
-
-1. Logistic Regression
-2. Decision Tree
-3. Random Forest
-4. Gradient Boosting
-5. Support Vector Machine (SVM)
-6. K-Nearest Neighbors (KNN)
-7. Gaussian Naive Bayes
-
-## ⚖️ Class Imbalance
-
-The project provides two approaches for handling class imbalance:
-
-- `class_weight="balanced"`
-- SMOTE (Synthetic Minority Oversampling Technique)
-
-## 🔧 Hyperparameter Tuning
-
-GridSearchCV is used to search for the best hyperparameters.
-
-The tuning objective is:
-
-```text
-Recall
+- 📊 Data Analysis & EDA
+- ⚙️ Data Preprocessing
+- ⚖️ Class Imbalance Handling
+- 🤖 Multiple Machine Learning Models
+- 🎯 Recall-focused Model Training
+- 🔧 Hyperparameter Tuning
+- 📈 ROC Curve
+- 📉 Precision-Recall Curve
+- 🎯 Confusion Matrix
+- 🌳 Feature Importance
