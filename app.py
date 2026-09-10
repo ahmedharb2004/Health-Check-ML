@@ -45,7 +45,7 @@ except ImportError:
 # =========================================================
 
 st.set_page_config(
-    page_title="Heart Disease Analyzer",
+    page_title="Health check ML",
     page_icon="❤️",
     layout="wide"
 )
@@ -85,7 +85,7 @@ div[data-testid="metric-container"] {
 # =========================================================
 
 st.markdown(
-    '<div class="main-title">❤️ Heart Disease Analyzer</div>',
+    '<div class="main-title">❤️ Health check ML</div>',
     unsafe_allow_html=True
 )
 
@@ -101,7 +101,7 @@ st.markdown(
 # =========================================================
 
 uploaded_file = st.file_uploader(
-    "Upload your heart disease CSV file",
+    "Upload your CSV file",
     type=["csv"]
 )
 
