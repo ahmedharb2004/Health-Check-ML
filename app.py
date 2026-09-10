@@ -766,12 +766,13 @@ with tab3:
             results_df["CV Recall"] - results_df["Recall"]
         )
 
-        overfitting_models = results_df[results_df["Overfit Gap"] > 0.10]
+       overfitting_models = results_df[results_df["Overfit Gap"] > 0.10]
         if not overfitting_models.empty:
             st.warning(
-                "⚠️ الموديلات دي فيها فجوة كبيرة (> 10%) بين أداء الـ "
-                "cross-validation (تدريب) وأداء الـ test set، وده مؤشر "
-                f"أوفر فيت: **{', '.join(overfitting_models['Model'])}**"
+                "⚠️ These models have a large gap (> 10%) between their "
+                "cross-validation (training) performance and test-set "
+                "performance, which indicates overfitting: "
+                f"**{', '.join(overfitting_models['Model'])}**"
             )
 
         # -------------------------------------------------
