@@ -45,7 +45,7 @@ except ImportError:
 # =========================================================
 
 st.set_page_config(
-    page_title="Health check ML",
+    page_title="Health Check ML",
     page_icon="❤️",
     layout="wide"
 )
@@ -85,7 +85,7 @@ div[data-testid="metric-container"] {
 # =========================================================
 
 st.markdown(
-    '<div class="main-title">❤️ Health check ML</div>',
+    '<div class="main-title">❤️ Health Check ML</div>',
     unsafe_allow_html=True
 )
 
