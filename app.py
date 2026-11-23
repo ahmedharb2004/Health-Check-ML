@@ -1,4 +1,5 @@
 import hashlib
+from pathlib import Path
 
 import streamlit as st
 import pandas as pd
@@ -95,6 +96,11 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+st.caption(
+    "⚠️ Educational machine-learning project for learning and demonstration. "
+    "It is not a medical device and does not provide medical advice or diagnosis."
+)
+
 
 # =========================================================
 # FILE UPLOAD
@@ -105,9 +111,12 @@ uploaded_file = st.file_uploader(
     type=["csv"]
 )
 
+# Sample dataset: lets visitors try the full app instantly,
+# without needing their own CSV file.
 if uploaded_file is None:
-    st.info("👆 Please upload a CSV file to start the analysis.")
-    st.stop()
+    st.info("👆 Upload your own CSV file, or try the app instantly with the bundled sample dataset.")
+    if not st.button("🫀 Try the bundled sample dataset (heart.csv)", type="primary"):
+        st.stop()
 
 
 # =========================================================
@@ -115,7 +124,17 @@ if uploaded_file is None:
 # =========================================================
 
 try:
-    df = pd.read_csv(uploaded_file)
+    if uploaded_file is not None:
+        file_bytes = uploaded_file.getvalue()
+        df = pd.read_csv(uploaded_file)
+    else:
+        sample_path = Path(__file__).parent / "heart.csv"
+        file_bytes = sample_path.read_bytes()
+        df = pd.read_csv(sample_path)
+        st.caption(
+            "Using the bundled sample dataset: heart.csv "
+            "(1,025 rows, UCI Heart Disease, target column: target)."
+        )
 except Exception as e:
     st.error(f"Error reading the CSV file: {e}")
     st.stop()
@@ -131,7 +150,7 @@ if df.empty:
 # =========================================================
 
 
-uploaded_file_hash = hashlib.sha256(uploaded_file.getvalue()).hexdigest()
+uploaded_file_hash = hashlib.sha256(file_bytes).hexdigest()
 
 if st.session_state.get("last_uploaded_hash") != uploaded_file_hash:
     _keys_to_clear = [
@@ -766,7 +785,7 @@ with tab3:
             results_df["CV Recall"] - results_df["Recall"]
         )
 
-       overfitting_models = results_df[results_df["Overfit Gap"] > 0.10]
+        overfitting_models = results_df[results_df["Overfit Gap"] > 0.10]
         if not overfitting_models.empty:
             st.warning(
                 "⚠️ These models have a large gap (> 10%) between their "
